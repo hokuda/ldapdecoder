@@ -1,0 +1,766 @@
+#!/usr/bin/python3
+
+import sys
+import re
+import array
+import asn1
+from typing import NamedTuple
+
+
+# log leader
+class LogReader():
+    def __init__(self, path):
+        self.path = path
+        self._fd = open(path)
+        self._lines = self._fd.readlines()
+        self._i = 0 # line index (kokomade yonda)
+        self._eof = self._i == len(self._lines)
+
+    def _next_line(self):
+        line = self._lines[self._i].rstrip()
+        self._i += 1
+        if self._i == len(self._lines):
+            self._eof = True
+        verbose(line)
+        return line
+        
+    def _skip_to_next_plaintext_header(self):
+        while not self._eof:
+            line = self._next_line()
+            if (("javax.net.ssl" in line) and
+                (line.endswith("Plaintext after DECRYPTION (") or
+                 line.endswith("Plaintext before ENCRYPTION ("))):
+                break
+
+    def _next_plaintext_tls_application_data(self):
+        byte_chunk = []
+        byte_offset = 0x0000
+        while not self._eof:
+            line = self._next_line()
+            byte_offset_string = '{:04X}'.format(byte_offset)
+            pattern = r".*  " + byte_offset_string + r": (([0-9A-F ][0-9A-F ] ){8})  (([0-9A-F ][0-9A-F ] ){8}) .+"
+            m = re.match(pattern, line)
+            if m:
+                byte_chunk += [int(s,16) for s in m.group(1).split()]
+                byte_chunk += [int(s,16) for s in m.group(3).split()]
+                byte_offset += 0x10
+            elif line.endswith(')'):
+                break
+            else:
+                warn(type(self).__name__ + "." + sys._getframe().f_code.co_name + ": Malformed log message:", line)
+        return byte_chunk
+
+    def next(self):
+        byte_chunk = []
+        while not self._eof:
+            byte_chunk += self._next_plaintext_tls_application_data()
+            b = array.array('B',byte_chunk).tobytes()
+            # validate the ASN1 segments in b
+            result = self._validate(b)
+            if result == BerSequence.OK:
+                return b
+            elif result == BerSequence.PREMATURE:
+                self._skip_to_next_plaintext_header()
+                continue
+            elif result == BerSequence.ASN1_SYNTAX_ERROR:
+                warn("skip these bytes", b, "because of ASN1 syntax error")
+                byte_chunk = []
+                continue
+        
+    def eof(self):
+        self._skip_to_next_plaintext_header()
+        return self._eof
+
+    def _validate(self, b):
+        return BerSequence(b).validate()
+        
+
+# Ber utility class
+class BerSequence():
+    """
+    scans sequence of multiple ber-formated byte chunks
+    and returns one from the top of sequence to the end
+    accessble as an iterator in 2 way:
+
+    bs = BerSequence(sequence_of_ber_bytes)
+    if bs.hasnext():
+        tag, value = bs.next()
+
+    for tag, value in BerSequence(sequence_of_ber_bytes):
+        ...
+    """
+    def __init__(self, b):
+        """
+        b := ber + ber + ber + ...
+        """
+        self.b = b
+        self.asn1_decoder = asn1.Decoder()
+        self.asn1_decoder.start(b)
+
+    def hasnext(self):
+        return not self.asn1_decoder.eof()
+
+    def next(self):
+        """
+        returns next tag and value
+        """
+        return self.asn1_decoder.read()
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if not self.hasnext():
+            raise StopIteration()
+        return self.next()
+
+    OK = 0
+    PREMATURE = 1
+    ASN1_SYNTAX_ERROR = 2
+    
+    def validate(self):
+        try:
+            for tag, values in self:
+                pass
+            return BerSequence.OK
+        except asn1.Error as e:
+            if str(e).startswith("Premature"):
+                return BerSequence.PREMATURE
+            elif str(e).startswith("ASN1 syntax error"):
+                return BerSequence.ASN1_SYNTAX_ERROR
+            else:
+                raise e
+
+
+class BerKeyValues(BerSequence):
+    def decode(self):
+        """
+        decode ber bytes and return key and list of values
+        key and values are strings decoded as utf-8
+        """
+        key = self.next()[1].decode('utf-8')
+        values = [value.decode('utf-8') for tag, value in BerSequence(self.next()[1])]
+        return key, values
+
+
+# ldap operation base class
+class ProtocolOp(BerSequence):
+    BIND_REQUEST = 0
+    BIND_RESPONSE = 1
+    UNBIND_REQUEST = 2
+    SEARCH_REQUEST = 3
+    SEARCH_RESULT_ENTRY = 4
+    SEARCH_RESULT_DONE = 5
+    SEARCH_RESULT_REFERENCE = 19
+    MODIFY_REQUEST = 6
+    MODIFY_RESPONSE = 7
+    ADD_REQUEST = 8
+    ADD_RESPONSE = 9
+    DEL_REQUEST = 10
+    DEL_RESPONSE = 11
+    MODIFY_DN_REQUEST = 12
+    MODIFY_DN_RESPONSE = 13
+    COMPARE_REQUEST = 14
+    COMPARE_RESPONSE = 15
+    ABANDON_REQUEST = 16
+    EXTENDED_REQUEST = 23
+    EXTENDED_RESPONSE = 24
+    INTERMEDIATE_RESPONSE = 25
+        
+
+class Control():
+    def __init__(self, b):
+        self.b = b
+
+
+class LdapMessage(NamedTuple):
+    message_id: int
+    protocol_op: ProtocolOp
+    controls: list = []
+
+
+class BindRequest(ProtocolOp):
+    SIMPLE=0
+    SASL=3
+    TYPE = {SIMPLE:"simple", SASL:"sasl"}
+
+    def __init__(self, b):
+        super().__init__(b)
+        self.version = self.next()[1]
+        self.name = self.next()[1].decode('utf-8')
+        
+        tag, value = self.next()
+        self.authentication_type = tag.nr
+        self.authentication = value.decode('utf-8') if tag.nr == BindRequest.SIMPLE else value
+
+        # TODO:
+        # decode SaslCredentials
+        self.saslCredentials = None
+        if self.hasnext():
+            self.saslCredentials = self.next()[1]
+
+    def __str__(self):
+        s  = "version:         {}\n".format(self.version)
+        s += "name:            {}\n".format(self.name)
+        s += "authentication:  {} ({})\n".format(self.authentication, BindRequest.TYPE[self.authentication_type])
+        s += "saslCredentials: {}".format(self.saslCredentials)
+        return s
+
+
+class UnbindRequest(ProtocolOp):
+    def __init__(self, b):
+        super().__init__(b)
+
+    def __str__(self):
+        return "NULL"
+
+
+class LDAPResult(ProtocolOp):
+    MESSAGE = {
+        0:"success",
+        1:"operationsError",
+        2:"protocolError",
+        3:"timeLimitExceeded",
+        4:"sizeLimitExceeded",
+        5:"compareFalse",
+        6:"compareTrue",
+        7:"authMethodNotSupported",
+        8:"strongerAuthRequired",
+        10:"referral",
+        11:"adminLimitExceeded",
+        12:"unavailableCriticalExtension",
+        13:"confidentialityRequired",
+        14:"saslBindInProgress",
+        16:"noSuchAttribute",
+        17:"undefinedAttributeType",
+        18:"inappropriateMatching",
+        19:"constraintViolation",
+        20:"attributeOrValueExists",
+        21:"invalidAttributeSyntax",
+        32:"noSuchObject",
+        33:"aliasProblem",
+        34:"invalidDNSyntax",
+        36:"aliasDereferencingProblem",
+        48:"inappropriateAuthentication",
+        49:"invalidCredentials",
+        50:"insufficientAccessRights",
+        51:"busy",
+        52:"unavailable",
+        53:"unwillingToPerform",
+        54:"loopDetect",
+        64:"namingViolation",
+        65:"objectClassViolation",
+        66:"notAllowedOnNonLeaf",
+        67:"notAllowedOnRDN",
+        68:"entryAlreadyExists",
+        69:"objectClassModsProhibited",
+        71:"affectsMultipleDSAs",
+        80:"other",
+    }
+
+    def __init__(self, b):
+        super().__init__(b)
+        self.resultCode = self.next()[1]
+        self.matchedDN = self.next()[1].decode('utf-8')
+        self.diagnosticMessage = self.next()[1]
+        self.referral = []
+        if self.hasnext():
+            self.referral = [value.decode('utf-8') for tag, value in BerSequence(self.next()[1])]
+
+    def __str__(self):
+        s  = "resultCode: {}({})\n".format(LDAPResult.MESSAGE[self.resultCode], self.resultCode)
+        s += "matchedDN:  {}\n".format(self.matchedDN)
+        s += "diagnosticMessage: {}\n".format(self.diagnosticMessage)
+        s += "referral:   {}".format(", ".join(self.referral))
+        return s
+
+
+class BindResponse(LDAPResult):
+    def __init__(self, b):
+        super().__init__(b)
+        self.serverSaslCreds = ""
+        if self.hasnext():
+            tag, self.serverSaslCreds = self.next()
+
+    def __str__(self):
+        s  = super().__str__()
+        s += "\nserverSaslCreds:   {}".format(self.serverSaslCreds)
+        return s
+
+
+# search filter base class
+class Filter(BerSequence):
+    def __init__(self, value):
+        super().__init__(value)
+        self.value = value
+        self.subfilters = []
+        self.decode()
+
+
+# 0
+class And(Filter):
+    def decode(self):
+        pass
+
+    def __str__(self):
+        return "(&" + "".join([str(f) for f in self.subfilters]) + ")"
+
+
+#1
+class Or(Filter):
+    def decode(self):
+        pass
+
+    def __str__(self):
+        return "(|" + "".join([str(f) for f in self.subfilters]) + ")"
+
+
+#2
+class Not(Filter):
+    def decode(self):
+        pass
+
+    def __str__(self):
+        return "(!" + "".join([str(f) for f in self.subfilters]) + ")"
+
+
+#3
+class EqualityMatch(Filter):
+    def decode(self):
+        self.attributeDesc = self.next()[1].decode('utf-8')
+        self.assertionValue = self.next()[1].decode('utf-8')
+
+    def __str__(self):
+        s = "(" + self.attributeDesc + "=" + self.assertionValue +")"
+        return s
+
+
+#4
+class Substrings(Filter):
+    INITIAL = 0
+    ANY     = 1
+    FINAL   = 2
+
+    def decode(self):
+        self.type = self.next()[1].decode('utf-8')
+
+        self.substrings = []
+        for tag, value in BerSequence(self.next()[1]):
+            substring = value.decode('utf-8')
+            if tag.nr == Substrings.INITIAL:
+                self.substrings.append(substring)
+                self.substrings.append("*")
+            elif tag.nr == Substrings.ANY:
+                if len(self.substrings)==0 or self.substrings[-1] != "*":
+                    self.substrings.append("*")
+                self.substrings.append(substring)
+                self.substrings.append("*")
+            elif tag.nr == Substrings.FINAL:
+                if len(self.substrings)==0 or self.substrings[-1] != "*":
+                    self.substrings.append("*")
+                self.substrings.append(substring)
+            
+    def __str__(self):
+        s = "(" + self.type + "=" + ''.join(self.substrings) + ")"
+        return s
+
+
+#5
+class GreaterOrEqual(EqualityMatch):
+    def __str__(self):
+        s = "(" + self.attributeDesc + ">=" + self.assertionValue +")"
+        return s
+
+
+#6
+class LessOrEqual(EqualityMatch):
+    def __str__(self):
+        s = "(" + self.attributeDesc + "<=" + self.assertionValue +")"
+        return s
+
+
+#7
+class Present(Filter):
+    def decode(self):
+        self.attr = self.value.decode('utf-8')
+
+    def __str__(self):
+        s = "(" + self.attr + "=*)"
+        return s
+
+
+#8
+class ApproxMatch(EqualityMatch):
+    def __str__(self):
+        s = "(" + self.attributeDesc + "~=" + self.assertionValue +")"
+        return s
+
+
+#9
+class ExtensibleMatch(Filter):
+    def decode(self):
+        # matchingRule    [1] MatchingRuleId OPTIONAL,
+        # type            [2] AttributeDescription OPTIONAL,
+        # matchValue      [3] AssertionValue,
+        # dnAttributes    [4] BOOLEAN DEFAULT FALSE }
+        # TODO:
+        # what if optional field is empty?
+        self.matchingRule = self.next()[1].decode('utf-8')
+        self.type = self.next()[1].decode('utf-8')
+        self.matchValue = self.next()[1].decode('utf-8')
+        tag, self.dnAttributes = self.next() # do not decode. it's boolean
+        
+    def __str__(self):
+        s = "(" + self.type
+        if self.dnAttributes:
+            s += ":dn"
+        s += ":" + self.matchingRule + "=" + self.matchValue + ")"
+        return s
+
+
+class SearchRequest(ProtocolOp):
+    SCOPE = {
+        0:"baseObject",
+        1:"singleLevel",
+        2:"wholeSubtree"
+    }
+
+    DEREFALIASES = {
+        0:"neverDerefAliases",
+        1:"derefInSearching",
+        2:"derefFindingBaseObj",
+        3:"derefAlways"
+    }
+
+    FILTERCLASS = {
+        0:And,
+        1:Or,
+        2:Not,
+        3:EqualityMatch,
+        4:Substrings,
+        5:GreaterOrEqual,
+        6:LessOrEqual,
+        7:Present,
+        8:ApproxMatch,
+        9:ExtensibleMatch,
+    }
+
+    def __init__(self, b):
+        super().__init__(b)
+        self.baseObject = self.next()[1].decode('utf-8')
+        self.scope = self.next()[1]
+        self.derefAliases = self.next()[1]
+        self.sizeLimit = self.next()[1]
+        self.timeLimit = self.next()[1]
+        self.typesOnly = self.next()[1]
+        tag, value = self.next()
+        self.filter = self.decode_filter(tag, value)
+        self.attributes = [value.decode('utf-8') for tag, value in BerSequence(self.next()[1])]
+
+    def decode_filter(self, tag, value):
+        f = SearchRequest.FILTERCLASS[tag.nr](value)
+        if isinstance(f, And) or isinstance(f, Or) or isinstance(f, Not):
+            f.subfilters = [self.decode_filter(t,v) for t,v in BerSequence(value)]
+        return f
+
+    def __str__(self):
+        s  = "baseObject:   {}\n".format(self.baseObject)
+        s += "scope:        {}({})\n".format(SearchRequest.SCOPE[self.scope], self.scope)
+        s += "derefAliases: {}({})\n".format(SearchRequest.DEREFALIASES[self.derefAliases], self.derefAliases)
+        s += "sizeLimit:    {}\n".format(self.sizeLimit)
+        s += "timeLimit:    {}\n".format(self.timeLimit)
+        s += "typesOnly:    {}\n".format(self.typesOnly)
+        s += "filter:       {}\n".format(self.filter)
+        s += "attributes:   {}\n".format(" ".join(self.attributes))
+        return s
+
+
+# search res entry
+class SearchResultEntry(ProtocolOp):
+
+    def __init__(self, b):
+        super().__init__(b)
+        self.objectName = self.next()[1].decode('utf-8')
+        self.attributes = [BerKeyValues(value).decode() for tag, value in BerSequence(self.next()[1])]
+
+    def __str__(self):
+        s  = "objectName: {}\n".format(self.objectName)
+        s += "attributes:\n"
+        for key, values in self.attributes:
+            for value in values:
+                s += "  {}: {}\n".format(key, value)
+        return s.rstrip()
+
+
+
+# search res done
+class SearchResultDone(LDAPResult):
+    pass
+
+
+class SearchResultReference(ProtocolOp):
+    def __init__(self, b):
+        super().__init__(b)
+        self.uris = [value.decode('utf-8') for tag, value in self]
+
+    def __str__(self):
+        s = ""
+        for uri in self.uris:
+            s += "uri: {}\n".format(uri)
+        return s.rstrip()
+
+
+# add
+class AddRequest(ProtocolOp):
+    def __init__(self, b):
+        super().__init__(b)
+        self.entry = self.next()[1].decode('utf-8')
+        self.attrs = [BerKeyValues(attr).decode() for tag, attr in BerSequence(self.next()[1])]
+
+    def __str__(self):
+        s  = "dn: {}\n".format(self.entry)
+        for key, values in self.attrs:
+            for value in values:
+                s += "{}: {}\n".format(key, value)
+        return s.rstrip()
+
+
+# add response
+class AddResponse(LDAPResult):
+    pass
+
+
+# modify
+class ModRequest(ProtocolOp):
+    """
+        ModifyRequest ::= [APPLICATION 6] SEQUENCE {
+             object          LDAPDN,
+             changes         SEQUENCE OF change SEQUENCE {
+                  operation       ENUMERATED {
+                       add     (0),
+                       delete  (1),
+                       replace (2),
+                       ...  },
+                  modification    PartialAttribute } }
+    """
+    OPERATION = {
+        0: "add",
+        1: "delete",
+        2: "replace"
+    }
+    
+    def __init__(self, b):
+        super().__init__(b)
+        self.object = self.next()[1].decode('utf-8')
+
+        self.changes = []
+        tag, changes = self.next()
+        for tag, value in BerSequence(changes):
+            b = BerSequence(value)
+            operation = b.next()[1]
+            modification = BerKeyValues(b.next()[1]).decode()
+            self.changes.append((operation, modification))
+            
+    def __str__(self):
+        s  = "dn:    {}\n".format(self.object)
+        s += "changes:\n"
+        for operation, modification in self.changes:
+            s += "  {}:\n".format(ModRequest.OPERATION[operation])
+            for value in modification[1]:
+                s += "    {}: {}\n".format(modification[0], value)
+        return s.rstrip()
+        
+
+# mod response
+class ModResponse(LDAPResult):
+    pass
+
+
+# modify DN request
+class ModifyDNRequest(ProtocolOp):
+    """
+        ModifyDNRequest ::= [APPLICATION 12] SEQUENCE {
+             entry           LDAPDN,
+             newrdn          RelativeLDAPDN,
+             deleteoldrdn    BOOLEAN,
+             newSuperior     [0] LDAPDN OPTIONAL }
+    """
+    
+    def __init__(self, b):
+        super().__init__(b)
+        self.entry = self.next()[1].decode('utf-8')
+        self.newrdn = self.next()[1].decode('utf-8')
+        self.deleteoldrdn = self.next()[1]
+        self.newSuperior = ""
+        if not self.hasnext():
+            return
+        self.newSuperior = self.next()[1].decode('utf-8')
+
+    def __str__(self):
+        s  = "entry: {}\n".format(self.entry)
+        s += "newrdn: {}\n".format(self.newrdn)
+        s += "deleteoldrdn: {}\n".format(self.deleteoldrdn)
+        s += "newSuperior: {}\n".format(self.newSuperior)
+        return s.rstrip()
+        
+
+# modify DN response
+class ModifyDNResponse(LDAPResult):
+    pass
+
+
+# delete request
+class DelRequest(ProtocolOp):
+    """
+        DelRequest ::= [APPLICATION 10] LDAPDN
+    """
+    
+    def __init__(self, b):
+        super().__init__(b)
+        self.dn = b.decode('utf-8')
+
+    def __str__(self):
+        s  = "dn: {}\n".format(self.dn)
+        return s.rstrip()
+        
+
+# delte response
+class DelResponse(LDAPResult):
+    pass
+
+
+# unsupported operation
+class UnimplementedOperation(ProtocolOp):
+
+    def decode():
+        pass
+
+    def __str__(self):
+        return "value: {}".format(self.b)
+
+
+# util functions
+def decode_ldap_messages(b):
+    ldap_messages = []
+    for tag, ldap_message_bytes in BerSequence(b):
+        if not (tag.nr==16 and tag.typ==32):
+            warn(sys._getframe().f_code.co_name + ":",
+                 "it does not look like LDAPMessage",
+                 tag, bytes2hex(ldap_message_bytes))
+            continue
+        ldap_message = decode_ldap_message(ldap_message_bytes)
+        ldap_messages.append(ldap_message)
+    return ldap_messages
+
+
+def decode_ldap_message(b):
+    bseq = BerSequence(b)
+    tag, message_id = bseq.next()
+    tag, protocol_op_bytes = bseq.next()
+    #warn("decode_ldap_message:", tag, protocol_op_bytes)
+    if tag.nr == ProtocolOp.BIND_REQUEST:
+        protocol_op = BindRequest(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.BIND_RESPONSE:
+        protocol_op = BindResponse(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.UNBIND_REQUEST:
+        protocol_op = UnbindRequest(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.SEARCH_REQUEST:
+        protocol_op = SearchRequest(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.SEARCH_RESULT_ENTRY:
+        protocol_op = SearchResultEntry(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.SEARCH_RESULT_DONE:
+        protocol_op = SearchResultDone(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.SEARCH_RESULT_REFERENCE:
+        protocol_op = SearchResultReference(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.MODIFY_REQUEST:
+        protocol_op = ModRequest(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.MODIFY_RESPONSE:
+        protocol_op = ModResponse(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.ADD_REQUEST:
+        protocol_op = AddRequest(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.ADD_RESPONSE:
+        protocol_op = AddResponse(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.DEL_REQUEST:
+        protocol_op = DelRequest(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.DEL_RESPONSE:
+        protocol_op = DelResponse(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.MODIFY_DN_REQUEST:
+        protocol_op = ModifyDNRequest(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.MODIFY_DN_RESPONSE:
+        protocol_op = ModifyDNResponse(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.COMPARE_REQUEST:
+        #protocol_op = CompareRequest(protocol_op_bytes)
+        protocol_op = UnimplementedOperation(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.COMPARE_RESPONSE:
+        #protocol_op = CompareResponse(protocol_op_bytes)
+        protocol_op = UnimplementedOperation(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.ABANDON_REQUEST:
+        #protocol_op = AbandonRequest(protocol_op_bytes)
+        protocol_op = UnimplementedOperation(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.EXTENDED_REQUEST:
+        #protocol_op = ExtendedRequest(protocol_op_bytes)
+        protocol_op = UnimplementedOperation(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.EXTENDED_RESPONSE:
+        #protocol_op = ExtendedResponse(protocol_op_bytes)
+        protocol_op = UnimplementedOperation(protocol_op_bytes)
+    elif tag.nr == ProtocolOp.INTERMEDIATE_RESPONSE:
+        #protocol_op = IntermediateResponse(protocol_op_bytes)
+        protocol_op = UnimplementedOperation(protocol_op_bytes)
+    else:
+        protocol_op = UnimplementedOperation(protocol_op_bytes)
+    controls = []
+    if bseq.hasnext():
+        tag, controls_bytes = bseq.next()
+    return LdapMessage(message_id, protocol_op, controls)
+
+
+def bytes2hex(b):
+    return '[' + ' '.join(r'%02X' % x for x in b) + ']'
+
+
+def p(prefix, offset, msg):
+    padding = " " * offset
+    for s in msg.split("\n"):
+        print(prefix + padding + s)
+
+
+DEBUG=True
+
+
+def debug(*msg):
+    if DEBUG:
+        print("DEBUG:", *msg)
+
+
+VERBOSE=True
+
+
+def verbose(*msg):
+    if VERBOSE:
+        print(*msg)
+
+
+def warn(*msg):
+    print("WARN:", *msg)
+
+
+def error(*msg):
+    print("ERROR:", *msg)
+
+
+# main
+reader = LogReader(sys.argv[1])
+
+while(not reader.eof()):
+    b = reader.next()
+    #debug("main:", bytes2hex(b), b)
+    if b == None:
+        continue
+    ldap_messages = decode_ldap_messages(b)
+    for messageid, protocolop, controls in ldap_messages:
+        p("+-----------------------------------------------", 0, "")
+        p("|", 2,"Message ID:" + str(messageid))
+        p("|", 2,"Protocol Op: " + type(protocolop).__name__)
+        p("|", 4, str(protocolop))
+        p("|", 2, "Controls:" + str(controls))
+        p("+-----------------------------------------------", 0, "")
