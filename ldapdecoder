@@ -7,14 +7,25 @@ import asn1
 from typing import NamedTuple
 
 
+def my_name():
+    index = sys.argv[0].rindex("/");
+    return sys.argv[0][index+1:]
+
+
 # log leader
 class LogReader():
+    NEITHER = 0
+    BEFORE_ENCRYPTION=1
+    AFTER_DECRYPTION=2
+
     def __init__(self, path):
         self.path = path
         self._fd = open(path)
         self._lines = self._fd.readlines()
         self._i = 0 # line index (kokomade yonda)
-        self._eof = self._i == len(self._lines)
+        self._eof = False
+        self._previous_plaintext_header = "|||||"
+        self._current_plaintext_header = "|||||"
 
     def _next_line(self):
         line = self._lines[self._i].rstrip()
@@ -25,12 +36,20 @@ class LogReader():
         return line
         
     def _skip_to_next_plaintext_header(self):
+        """
+        finds a plain text header, ie,
+        "Plaintext before ENCRYPTION" or
+        "Plaintext after DECRYPTION",
+        and returns a type of plaintext, ie, BEFORE_ENCRYPTION or AFTER_DECRYPTION
+        """
         while not self._eof:
             line = self._next_line()
-            if (("javax.net.ssl" in line) and
-                (line.endswith("Plaintext after DECRYPTION (") or
-                 line.endswith("Plaintext before ENCRYPTION ("))):
-                break
+            if "javax.net.ssl" in line:
+                if (line.endswith("Plaintext after DECRYPTION (") or
+                    line.endswith("Plaintext before ENCRYPTION (")):
+                    self._previous_plaintext_header = self._current_plaintext_header
+                    self._current_plaintext_header = line
+                    break
 
     def _next_plaintext_tls_application_data(self):
         byte_chunk = []
@@ -47,24 +66,67 @@ class LogReader():
             elif line.endswith(')'):
                 break
             else:
-                warn(type(self).__name__ + "." + sys._getframe().f_code.co_name + ": Malformed log message:", line)
+                pass # skip
         return byte_chunk
 
     def next(self):
-        byte_chunk = []
+        def _messed_up():
+            """
+            Are output streams of multiple threads mixed up?
+
+            06:52:03,241 ERROR [stderr] (ServerService Thread Pool -- 79) javax.net.ssl|DEBUG|8A|ServerService Thread Pool -- 79|2022-02-01 06:52:03.240 GMT|SSLCipher.java:1957|Plaintext after DECRYPTION (
+                                                                                                 ^self._xxxx_plaintext_header.split('|')[-4]                                     ^self._xxxx_plaintext_header.split('|')[-1]
+            """
+            # compare thread IDs
+            prev_thread = self._previous_plaintext_header.split('|')[-4]
+            curr_thread = self._current_plaintext_header.split('|')[-4]
+            same_thread = (prev_thread == "") or (prev_thread == curr_thread)
+            # "Plaintext after DECRYPTION (" or "Plaintext before ENCRYPTION ("
+            same_direction = self._previous_plaintext_header.split('|')[-1] == self._current_plaintext_header.split('|')[-1]
+            return not same_thread
+
+        def _should_reset_byte_chunk():
+            """
+            true if same thread and opposite directions (one is incoming and another is outbound)
+            """
+            # compare thread IDs
+            prev_thread = self._previous_plaintext_header.split('|')[-4]
+            curr_thread = self._current_plaintext_header.split('|')[-4]
+            same_thread = (prev_thread == "") or (prev_thread == curr_thread)
+            # "Plaintext after DECRYPTION (" or "Plaintext before ENCRYPTION ("
+            same_direction = self._previous_plaintext_header.split('|')[-1] == self._current_plaintext_header.split('|')[-1]
+            return same_thread and (not same_direction)
+        
+        byte_buffer = []
         while not self._eof:
-            byte_chunk += self._next_plaintext_tls_application_data()
-            b = array.array('B',byte_chunk).tobytes()
+            next_byte_chunk = self._next_plaintext_tls_application_data()
+            if len(byte_buffer) > 0 and _messed_up():
+                warn("Input data contains interlaced plaintext of multiple threads. May need data cleansing.")
+                warn("previous line of plaintext header: " + self._previous_plaintext_header)
+                warn("current line of plaintext header:  " + self._current_plaintext_header)
+                warn("byte_buffer reset")
+            if _should_reset_byte_chunk():
+                byte_buffer = []
+            byte_buffer += next_byte_chunk
+            byte_array = array.array('B',byte_buffer).tobytes()
             # validate the ASN1 segments in b
-            result = self._validate(b)
+            try:
+                result = self._validate(byte_array)
+            except IndexError as e:
+                warn("failed to validate {}... with {}. byte_buffer reset.".format(str(byte_buffer[0:16]),  str(e)))
+                byte_buffer = []
+                continue
             if result == BerSequence.OK:
-                return b
+                debug("_validate: result: OK")
+                return byte_array
             elif result == BerSequence.PREMATURE:
+                debug("_validate: result: PREMATURE")
                 self._skip_to_next_plaintext_header()
                 continue
             elif result == BerSequence.ASN1_SYNTAX_ERROR:
-                warn("skip these bytes", b, "because of ASN1 syntax error")
-                byte_chunk = []
+                debug("_validate: result: ERROR")
+                warn("skip these bytes", byte_array, "because of ASN1 syntax error")
+                byte_buffer = []
                 continue
         
     def eof(self):
@@ -721,10 +783,11 @@ def bytes2hex(b):
 def p(prefix, offset, msg):
     padding = " " * offset
     for s in msg.split("\n"):
-        print(prefix + padding + s)
+        print("{} {}{}{}".format(my_name(), prefix, padding, s))
 
 
-DEBUG=True
+DEBUG=False
+#DEBUG=True
 
 
 def debug(*msg):
@@ -764,3 +827,9 @@ while(not reader.eof()):
         p("|", 4, str(protocolop))
         p("|", 2, "Controls:" + str(controls))
         p("+-----------------------------------------------", 0, "")
+        """
+        p("LDAP:", 2,"Message ID:" + str(messageid))
+        p("LDAP:", 2,"Protocol Op: " + type(protocolop).__name__)
+        p("LDAP:", 4, str(protocolop))
+        p("LDAP:", 2, "Controls:" + str(controls))
+        """

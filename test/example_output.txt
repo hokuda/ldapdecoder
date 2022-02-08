@@ -253,31 +253,31 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:28,630 ERROR [stderr] (ServerService Thread Pool -- 77)   0020: 45 32 2E 43 4F 4D 80 09   50 61 73 73 77 30 72 64  E2.COM..Passw0rd
 2021-08-25 12:05:28,630 ERROR [stderr] (ServerService Thread Pool -- 77)   0030: 2E                                                 .
 2021-08-25 12:05:28,630 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:1
-|  Protocol Op: BindRequest
-|    version:         3
-|    name:            Administrator@EXAMPLE2.COM
-|    authentication:  Passw0rd. (simple)
-|    saslCredentials: None
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:1
+ldapdecoder |  Protocol Op: BindRequest
+ldapdecoder |    version:         3
+ldapdecoder |    name:            Administrator@EXAMPLE2.COM
+ldapdecoder |    authentication:  Passw0rd. (simple)
+ldapdecoder |    saslCredentials: None
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:28,828 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:28.827 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:28,829 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:28.829 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:28,831 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:28.831 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
 2021-08-25 12:05:28,831 ERROR [stderr] (Thread-100)   0000: 30 84 00 00 00 10 02 01   01 61 84 00 00 00 07 0A  0........a......
 2021-08-25 12:05:28,831 ERROR [stderr] (Thread-100)   0010: 01 00 04 00 04 00                                  ......
 2021-08-25 12:05:28,832 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:1
-|  Protocol Op: BindResponse
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|    serverSaslCreds:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:1
+ldapdecoder |  Protocol Op: BindResponse
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |    serverSaslCreds:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:28,834 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:28.834 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 121
 2021-08-25 12:05:28,835 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:28.834 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:28,835 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 77 02 01 02 68 72 04   27 63 6E 3D 74 65 6D 70  0w...hr.'cn=temp
@@ -289,30 +289,30 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:28,835 ERROR [stderr] (ServerService Thread Pool -- 77)   0060: 65 6D 70 75 73 65 72 30   10 04 02 63 6E 31 0A 04  empuser0...cn1..
 2021-08-25 12:05:28,835 ERROR [stderr] (ServerService Thread Pool -- 77)   0070: 08 74 65 6D 70 75 73 65   72                       .tempuser
 2021-08-25 12:05:28,835 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:2
-|  Protocol Op: AddRequest
-|    dn: cn=tempuser,cn=users,dc=example2,dc=com
-|    objectClass: user
-|    samaccountname: tempuser
-|    cn: tempuser
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:2
+ldapdecoder |  Protocol Op: AddRequest
+ldapdecoder |    dn: cn=tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |    objectClass: user
+ldapdecoder |    samaccountname: tempuser
+ldapdecoder |    cn: tempuser
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:29,032 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.032 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:29,033 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.033 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:29,035 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.034 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
 2021-08-25 12:05:29,035 ERROR [stderr] (Thread-100)   0000: 30 84 00 00 00 10 02 01   02 69 84 00 00 00 07 0A  0........i......
 2021-08-25 12:05:29,035 ERROR [stderr] (Thread-100)   0010: 01 00 04 00 04 00                                  ......
 2021-08-25 12:05:29,035 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:2
-|  Protocol Op: AddResponse
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:2
+ldapdecoder |  Protocol Op: AddResponse
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:29,038 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:29.038 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 381
 2021-08-25 12:05:29,038 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:29.038 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:29,038 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 82 01 79 02 01 03 63   82 01 72 04 10 64 63 3D  0..y...c..r..dc=
@@ -340,20 +340,20 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:29,039 ERROR [stderr] (ServerService Thread Pool -- 77)   0160: 63 6F 75 6E 74 6E 61 6D   65 04 06 6D 65 6D 62 65  countname..membe
 2021-08-25 12:05:29,039 ERROR [stderr] (ServerService Thread Pool -- 77)   0170: 72 04 0A 70 77 64 4C 61   73 74 53 65 74           r..pwdLastSet
 2021-08-25 12:05:29,039 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:3
-|  Protocol Op: SearchRequest
-|    baseObject:   dc=redhat,dc=com
-|    scope:        wholeSubtree(2)
-|    derefAliases: derefAlways(3)
-|    sizeLimit:    0
-|    timeLimit:    0
-|    typesOnly:    False
-|    filter:       (&(uid=*)(|(!(uid=nosuchuser))(sn:dn:2.16.840.1.113730.3.3.2.7.1=passin)(createTimestamp>=20070101000000Z)(createTimestamp<=21000101000000Z)(cn=u*)(cn=*u)(cn=*u*)(cn=u*s*)(cn~=ser)))
-|    attributes:   entrydn uid objectClass givenName sn memberOf title createtimestamp uidNumber cn samaccountname member pwdLastSet
-|    
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:3
+ldapdecoder |  Protocol Op: SearchRequest
+ldapdecoder |    baseObject:   dc=redhat,dc=com
+ldapdecoder |    scope:        wholeSubtree(2)
+ldapdecoder |    derefAliases: derefAlways(3)
+ldapdecoder |    sizeLimit:    0
+ldapdecoder |    timeLimit:    0
+ldapdecoder |    typesOnly:    False
+ldapdecoder |    filter:       (&(uid=*)(|(!(uid=nosuchuser))(sn:dn:2.16.840.1.113730.3.3.2.7.1=passin)(createTimestamp>=20070101000000Z)(createTimestamp<=21000101000000Z)(cn=u*)(cn=*u)(cn=*u*)(cn=u*s*)(cn~=ser)))
+ldapdecoder |    attributes:   entrydn uid objectClass givenName sn memberOf title createtimestamp uidNumber cn samaccountname member pwdLastSet
+ldapdecoder |    
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:29,237 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.236 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 168
 2021-08-25 12:05:29,238 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.237 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 168
 2021-08-25 12:05:29,240 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.239 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
@@ -367,15 +367,15 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:29,242 ERROR [stderr] (Thread-100)   0070: 70 73 3A 2F 2F 72 65 64   68 61 74 2E 63 6F 6D 2F  ps://redhat.com/
 2021-08-25 12:05:29,242 ERROR [stderr] (Thread-100)   0080: 64 63 3D 72 65 64 68 61   74 2C 64 63 3D 63 6F 6D  dc=redhat,dc=com
 2021-08-25 12:05:29,242 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:3
-|  Protocol Op: SearchResultDone
-|    resultCode: referral(10)
-|    matchedDN:  
-|    diagnosticMessage: b"0000202B: RefErr: DSID-031007F9, data 0, 1 access points\n\tref 1: 'redhat.com'\n\x00"
-|    referral:   ldaps://redhat.com/dc=redhat,dc=com
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:3
+ldapdecoder |  Protocol Op: SearchResultDone
+ldapdecoder |    resultCode: referral(10)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b"0000202B: RefErr: DSID-031007F9, data 0, 1 access points\n\tref 1: 'redhat.com'\n\x00"
+ldapdecoder |    referral:   ldaps://redhat.com/dc=redhat,dc=com
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:29,442 ERROR [stderr] (ServerService Thread Pool -- 77) javax.naming.CommunicationException: redhat.com:636 [Root exception is java.net.ConnectException: Connection refused (Connection refused)]
 2021-08-25 12:05:29,443 ERROR [stderr] (ServerService Thread Pool -- 77) 	at com.sun.jndi.ldap.LdapReferralContext.<init>(LdapReferralContext.java:96)
 2021-08-25 12:05:29,444 ERROR [stderr] (ServerService Thread Pool -- 77) 	at com.sun.jndi.ldap.LdapReferralException.getReferralContext(LdapReferralException.java:151)
@@ -467,20 +467,20 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:29,451 ERROR [stderr] (ServerService Thread Pool -- 77)   0170: 6E 74 6E 61 6D 65 04 06   6D 65 6D 62 65 72 04 0A  ntname..member..
 2021-08-25 12:05:29,451 ERROR [stderr] (ServerService Thread Pool -- 77)   0180: 70 77 64 4C 61 73 74 53   65 74                    pwdLastSet
 2021-08-25 12:05:29,451 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchRequest
-|    baseObject:   dc=example2,dc=com
-|    scope:        wholeSubtree(2)
-|    derefAliases: derefAlways(3)
-|    sizeLimit:    0
-|    timeLimit:    0
-|    typesOnly:    False
-|    filter:       (&(samaccountname=*)(|(!(uid=nosuchuser))(sn:dn:2.16.840.1.113730.3.3.2.7.1=passin)(createTimestamp>=20070101000000Z)(createTimestamp<=21000101000000Z)(cn=u*)(cn=*u)(cn=*u*)(cn=u*s*)(cn~=ser)))
-|    attributes:   entrydn uid objectClass givenName sn memberOf title createtimestamp uidNumber cn samaccountname member pwdLastSet
-|    
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchRequest
+ldapdecoder |    baseObject:   dc=example2,dc=com
+ldapdecoder |    scope:        wholeSubtree(2)
+ldapdecoder |    derefAliases: derefAlways(3)
+ldapdecoder |    sizeLimit:    0
+ldapdecoder |    timeLimit:    0
+ldapdecoder |    typesOnly:    False
+ldapdecoder |    filter:       (&(samaccountname=*)(|(!(uid=nosuchuser))(sn:dn:2.16.840.1.113730.3.3.2.7.1=passin)(createTimestamp>=20070101000000Z)(createTimestamp<=21000101000000Z)(cn=u*)(cn=*u)(cn=*u*)(cn=u*s*)(cn~=ser)))
+ldapdecoder |    attributes:   entrydn uid objectClass givenName sn memberOf title createtimestamp uidNumber cn samaccountname member pwdLastSet
+ldapdecoder |    
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:29,647 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.646 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 16377
 2021-08-25 12:05:29,851 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.851 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 16377
 2021-08-25 12:05:29,904 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:29.904 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
@@ -1664,836 +1664,836 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:29,943 ERROR [stderr] (Thread-100)   0960: 4C 45 32 2C 44 43 3D 43   4F 4D 30 84 00 00 00 10  LE2,DC=COM0.....
 2021-08-25 12:05:29,943 ERROR [stderr] (Thread-100)   0970: 02 01 04 65 84 00 00 00   07 0A 01 00 04 00 04 00  ...e............
 2021-08-25 12:05:29,943 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Access Control Assistance Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Access Control Assistance Operators
-|      sAMAccountName: Access Control Assistance Operators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Account Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Account Operators
-|      sAMAccountName: Account Operators
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: Administrator
-|      memberOf: CN=Group Policy Creator Owners,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Schema Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|      pwdLastSet: 132692940887687819
-|      sAMAccountName: Administrator
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Administrators
-|      member: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Administrators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Allowed RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Allowed RODC Password Replication Group
-|      sAMAccountName: Allowed RODC Password Replication Group
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Backup Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Backup Operators
-|      sAMAccountName: Backup Operators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Cert Publishers,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Cert Publishers
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Cert Publishers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Certificate Service DCOM Access,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Certificate Service DCOM Access
-|      sAMAccountName: Certificate Service DCOM Access
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Cloneable Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Cloneable Domain Controllers
-|      sAMAccountName: Cloneable Domain Controllers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Cryptographic Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Cryptographic Operators
-|      sAMAccountName: Cryptographic Operators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=DefaultAccount,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: DefaultAccount
-|      memberOf: CN=System Managed Accounts Group,CN=Builtin,DC=EXAMPLE2,DC=COM
-|      pwdLastSet: 0
-|      sAMAccountName: DefaultAccount
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Denied RODC Password Replication Group
-|      member: CN=Read-only Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Group Policy Creator Owners,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Cert Publishers,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Schema Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=krbtgt,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Denied RODC Password Replication Group
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Distributed COM Users,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Distributed COM Users
-|      sAMAccountName: Distributed COM Users
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Domain Admins
-|      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Domain Admins
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Domain Computers,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Domain Computers
-|      sAMAccountName: Domain Computers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Domain Controllers
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Domain Controllers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Domain Guests,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Domain Guests
-|      memberOf: CN=Guests,CN=Builtin,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Domain Guests
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Domain Users,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Domain Users
-|      memberOf: CN=Users,CN=Builtin,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Domain Users
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Enterprise Admins
-|      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Enterprise Admins
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Enterprise Key Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Enterprise Key Admins
-|      sAMAccountName: Enterprise Key Admins
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Enterprise Read-only Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Enterprise Read-only Domain Controllers
-|      sAMAccountName: Enterprise Read-only Domain Controllers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Event Log Readers,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Event Log Readers
-|      sAMAccountName: Event Log Readers
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=extprimg,OU=external,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: extprimg
-|      sAMAccountName: extprimg
-|      createTimeStamp: 20210513154054.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Group Policy Creator Owners,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Group Policy Creator Owners
-|      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Group Policy Creator Owners
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=group1,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: group1
-|      sAMAccountName: group1
-|      createTimeStamp: 20210325124314.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Guest,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: Guest
-|      memberOf: CN=Guests,CN=Builtin,DC=EXAMPLE2,DC=COM
-|      pwdLastSet: 0
-|      sAMAccountName: Guest
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Guests,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Guests
-|      member: CN=Domain Guests,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=Guest,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Guests
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=host.example2.com,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: host.example2.com
-|      givenName: host
-|      pwdLastSet: 132671964294811624
-|      sAMAccountName: host.example2.com
-|      createTimeStamp: 20210603121853.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Hyper-V Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Hyper-V Administrators
-|      sAMAccountName: Hyper-V Administrators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=IIS_IUSRS,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: IIS_IUSRS
-|      member: CN=S-1-5-17,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: IIS_IUSRS
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Incoming Forest Trust Builders,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Incoming Forest Trust Builders
-|      sAMAccountName: Incoming Forest Trust Builders
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Key Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Key Admins
-|      sAMAccountName: Key Admins
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=krbtgt,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: krbtgt
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      pwdLastSet: 132611469616137125
-|      sAMAccountName: krbtgt
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Network Configuration Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Network Configuration Operators
-|      sAMAccountName: Network Configuration Operators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Performance Log Users,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Performance Log Users
-|      sAMAccountName: Performance Log Users
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Performance Monitor Users,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Performance Monitor Users
-|      sAMAccountName: Performance Monitor Users
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Pre-Windows 2000 Compatible Access,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Pre-Windows 2000 Compatible Access
-|      member: CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Pre-Windows 2000 Compatible Access
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=primg,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: primg
-|      sAMAccountName: primg
-|      createTimeStamp: 20210513153458.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Print Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Print Operators
-|      sAMAccountName: Print Operators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Protected Users,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Protected Users
-|      sAMAccountName: Protected Users
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=RAS and IAS Servers,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: RAS and IAS Servers
-|      sAMAccountName: RAS and IAS Servers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=RDS Endpoint Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: RDS Endpoint Servers
-|      sAMAccountName: RDS Endpoint Servers
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=RDS Management Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: RDS Management Servers
-|      sAMAccountName: RDS Management Servers
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=RDS Remote Access Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: RDS Remote Access Servers
-|      sAMAccountName: RDS Remote Access Servers
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Read-only Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Read-only Domain Controllers
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Read-only Domain Controllers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Remote Desktop Users,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Remote Desktop Users
-|      sAMAccountName: Remote Desktop Users
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Remote Management Users,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Remote Management Users
-|      sAMAccountName: Remote Management Users
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Replicator,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Replicator
-|      sAMAccountName: Replicator
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Schema Admins,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Schema Admins
-|      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
-|      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Schema Admins
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Server Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Server Operators
-|      sAMAccountName: Server Operators
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Storage Replica Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Storage Replica Administrators
-|      sAMAccountName: Storage Replica Administrators
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=System Managed Accounts Group,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: System Managed Accounts Group
-|      member: CN=DefaultAccount,CN=Users,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: System Managed Accounts Group
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=tempuser,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: tempuser
-|      pwdLastSet: 0
-|      sAMAccountName: tempuser
-|      createTimeStamp: 20210825030523.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Terminal Server License Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Terminal Server License Servers
-|      sAMAccountName: Terminal Server License Servers
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=test.example2.com-user,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: test.example2.com-user
-|      sn: org
-|      givenName: www
-|      pwdLastSet: 132653754730592993
-|      sAMAccountName: test.example2.com-us
-|      createTimeStamp: 20210513102537.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=user02,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: user02
-|      givenName: user02
-|      pwdLastSet: 132407398817767188
-|      sAMAccountName: user02
-|      createTimeStamp: 20210706070630.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=user1,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: user1
-|      givenName: user1
-|      pwdLastSet: 132380550748276450
-|      sAMAccountName: user1
-|      createTimeStamp: 20210709012419.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=user3,CN=Users,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      cn: user3
-|      givenName: user3
-|      pwdLastSet: 132731370548107084
-|      sAMAccountName: user3
-|      createTimeStamp: 20210811063054.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Users,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Users
-|      member: CN=Domain Users,CN=Users,DC=EXAMPLE2,DC=COM
-|      member: CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
-|      member: CN=S-1-5-4,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Users
-|      createTimeStamp: 20210325115427.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=WIN-NIQ5TAQKANC,OU=Domain Controllers,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: person
-|      objectClass: organizationalPerson
-|      objectClass: user
-|      objectClass: computer
-|      cn: WIN-NIQ5TAQKANC
-|      pwdLastSet: 132731344977155096
-|      sAMAccountName: WIN-NIQ5TAQKANC$
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultEntry
-|    objectName: CN=Windows Authorization Access Group,CN=Builtin,DC=EXAMPLE2,DC=COM
-|    attributes:
-|      objectClass: top
-|      objectClass: group
-|      cn: Windows Authorization Access Group
-|      member: CN=S-1-5-9,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
-|      sAMAccountName: Windows Authorization Access Group
-|      createTimeStamp: 20210325115601.0Z
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultReference
-|    uri: ldaps://EXAMPLE2.COM/CN=Configuration,DC=EXAMPLE2,DC=COM
-|  Controls:[]
-+-----------------------------------------------
-+-----------------------------------------------
-|  Message ID:4
-|  Protocol Op: SearchResultDone
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Access Control Assistance Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Access Control Assistance Operators
+ldapdecoder |      sAMAccountName: Access Control Assistance Operators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Account Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Account Operators
+ldapdecoder |      sAMAccountName: Account Operators
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: Administrator
+ldapdecoder |      memberOf: CN=Group Policy Creator Owners,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Schema Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |      pwdLastSet: 132692940887687819
+ldapdecoder |      sAMAccountName: Administrator
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Administrators
+ldapdecoder |      member: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Administrators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Allowed RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Allowed RODC Password Replication Group
+ldapdecoder |      sAMAccountName: Allowed RODC Password Replication Group
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Backup Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Backup Operators
+ldapdecoder |      sAMAccountName: Backup Operators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Cert Publishers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Cert Publishers
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Cert Publishers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Certificate Service DCOM Access,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Certificate Service DCOM Access
+ldapdecoder |      sAMAccountName: Certificate Service DCOM Access
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Cloneable Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Cloneable Domain Controllers
+ldapdecoder |      sAMAccountName: Cloneable Domain Controllers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Cryptographic Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Cryptographic Operators
+ldapdecoder |      sAMAccountName: Cryptographic Operators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=DefaultAccount,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: DefaultAccount
+ldapdecoder |      memberOf: CN=System Managed Accounts Group,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |      pwdLastSet: 0
+ldapdecoder |      sAMAccountName: DefaultAccount
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Denied RODC Password Replication Group
+ldapdecoder |      member: CN=Read-only Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Group Policy Creator Owners,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Cert Publishers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Schema Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=krbtgt,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Denied RODC Password Replication Group
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Distributed COM Users,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Distributed COM Users
+ldapdecoder |      sAMAccountName: Distributed COM Users
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Domain Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Domain Admins
+ldapdecoder |      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Domain Admins
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Domain Computers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Domain Computers
+ldapdecoder |      sAMAccountName: Domain Computers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Domain Controllers
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Domain Controllers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Domain Guests,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Domain Guests
+ldapdecoder |      memberOf: CN=Guests,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Domain Guests
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Domain Users,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Domain Users
+ldapdecoder |      memberOf: CN=Users,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Domain Users
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Enterprise Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Enterprise Admins
+ldapdecoder |      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Enterprise Admins
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Enterprise Key Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Enterprise Key Admins
+ldapdecoder |      sAMAccountName: Enterprise Key Admins
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Enterprise Read-only Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Enterprise Read-only Domain Controllers
+ldapdecoder |      sAMAccountName: Enterprise Read-only Domain Controllers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Event Log Readers,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Event Log Readers
+ldapdecoder |      sAMAccountName: Event Log Readers
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=extprimg,OU=external,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: extprimg
+ldapdecoder |      sAMAccountName: extprimg
+ldapdecoder |      createTimeStamp: 20210513154054.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Group Policy Creator Owners,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Group Policy Creator Owners
+ldapdecoder |      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Group Policy Creator Owners
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=group1,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: group1
+ldapdecoder |      sAMAccountName: group1
+ldapdecoder |      createTimeStamp: 20210325124314.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Guest,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: Guest
+ldapdecoder |      memberOf: CN=Guests,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |      pwdLastSet: 0
+ldapdecoder |      sAMAccountName: Guest
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Guests,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Guests
+ldapdecoder |      member: CN=Domain Guests,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=Guest,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Guests
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=host.example2.com,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: host.example2.com
+ldapdecoder |      givenName: host
+ldapdecoder |      pwdLastSet: 132671964294811624
+ldapdecoder |      sAMAccountName: host.example2.com
+ldapdecoder |      createTimeStamp: 20210603121853.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Hyper-V Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Hyper-V Administrators
+ldapdecoder |      sAMAccountName: Hyper-V Administrators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=IIS_IUSRS,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: IIS_IUSRS
+ldapdecoder |      member: CN=S-1-5-17,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: IIS_IUSRS
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Incoming Forest Trust Builders,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Incoming Forest Trust Builders
+ldapdecoder |      sAMAccountName: Incoming Forest Trust Builders
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Key Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Key Admins
+ldapdecoder |      sAMAccountName: Key Admins
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=krbtgt,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: krbtgt
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      pwdLastSet: 132611469616137125
+ldapdecoder |      sAMAccountName: krbtgt
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Network Configuration Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Network Configuration Operators
+ldapdecoder |      sAMAccountName: Network Configuration Operators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Performance Log Users,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Performance Log Users
+ldapdecoder |      sAMAccountName: Performance Log Users
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Performance Monitor Users,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Performance Monitor Users
+ldapdecoder |      sAMAccountName: Performance Monitor Users
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Pre-Windows 2000 Compatible Access,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Pre-Windows 2000 Compatible Access
+ldapdecoder |      member: CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Pre-Windows 2000 Compatible Access
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=primg,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: primg
+ldapdecoder |      sAMAccountName: primg
+ldapdecoder |      createTimeStamp: 20210513153458.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Print Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Print Operators
+ldapdecoder |      sAMAccountName: Print Operators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Protected Users,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Protected Users
+ldapdecoder |      sAMAccountName: Protected Users
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=RAS and IAS Servers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: RAS and IAS Servers
+ldapdecoder |      sAMAccountName: RAS and IAS Servers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=RDS Endpoint Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: RDS Endpoint Servers
+ldapdecoder |      sAMAccountName: RDS Endpoint Servers
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=RDS Management Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: RDS Management Servers
+ldapdecoder |      sAMAccountName: RDS Management Servers
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=RDS Remote Access Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: RDS Remote Access Servers
+ldapdecoder |      sAMAccountName: RDS Remote Access Servers
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Read-only Domain Controllers,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Read-only Domain Controllers
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Read-only Domain Controllers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Remote Desktop Users,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Remote Desktop Users
+ldapdecoder |      sAMAccountName: Remote Desktop Users
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Remote Management Users,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Remote Management Users
+ldapdecoder |      sAMAccountName: Remote Management Users
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Replicator,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Replicator
+ldapdecoder |      sAMAccountName: Replicator
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Schema Admins,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Schema Admins
+ldapdecoder |      member: CN=Administrator,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Schema Admins
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Server Operators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Server Operators
+ldapdecoder |      sAMAccountName: Server Operators
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Storage Replica Administrators,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Storage Replica Administrators
+ldapdecoder |      sAMAccountName: Storage Replica Administrators
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=System Managed Accounts Group,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: System Managed Accounts Group
+ldapdecoder |      member: CN=DefaultAccount,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: System Managed Accounts Group
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=tempuser,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: tempuser
+ldapdecoder |      pwdLastSet: 0
+ldapdecoder |      sAMAccountName: tempuser
+ldapdecoder |      createTimeStamp: 20210825030523.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Terminal Server License Servers,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Terminal Server License Servers
+ldapdecoder |      sAMAccountName: Terminal Server License Servers
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=test.example2.com-user,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: test.example2.com-user
+ldapdecoder |      sn: org
+ldapdecoder |      givenName: www
+ldapdecoder |      pwdLastSet: 132653754730592993
+ldapdecoder |      sAMAccountName: test.example2.com-us
+ldapdecoder |      createTimeStamp: 20210513102537.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=user02,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: user02
+ldapdecoder |      givenName: user02
+ldapdecoder |      pwdLastSet: 132407398817767188
+ldapdecoder |      sAMAccountName: user02
+ldapdecoder |      createTimeStamp: 20210706070630.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=user1,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: user1
+ldapdecoder |      givenName: user1
+ldapdecoder |      pwdLastSet: 132380550748276450
+ldapdecoder |      sAMAccountName: user1
+ldapdecoder |      createTimeStamp: 20210709012419.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=user3,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      cn: user3
+ldapdecoder |      givenName: user3
+ldapdecoder |      pwdLastSet: 132731370548107084
+ldapdecoder |      sAMAccountName: user3
+ldapdecoder |      createTimeStamp: 20210811063054.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Users,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Users
+ldapdecoder |      member: CN=Domain Users,CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
+ldapdecoder |      member: CN=S-1-5-4,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Users
+ldapdecoder |      createTimeStamp: 20210325115427.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=WIN-NIQ5TAQKANC,OU=Domain Controllers,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: person
+ldapdecoder |      objectClass: organizationalPerson
+ldapdecoder |      objectClass: user
+ldapdecoder |      objectClass: computer
+ldapdecoder |      cn: WIN-NIQ5TAQKANC
+ldapdecoder |      pwdLastSet: 132731344977155096
+ldapdecoder |      sAMAccountName: WIN-NIQ5TAQKANC$
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultEntry
+ldapdecoder |    objectName: CN=Windows Authorization Access Group,CN=Builtin,DC=EXAMPLE2,DC=COM
+ldapdecoder |    attributes:
+ldapdecoder |      objectClass: top
+ldapdecoder |      objectClass: group
+ldapdecoder |      cn: Windows Authorization Access Group
+ldapdecoder |      member: CN=S-1-5-9,CN=ForeignSecurityPrincipals,DC=EXAMPLE2,DC=COM
+ldapdecoder |      sAMAccountName: Windows Authorization Access Group
+ldapdecoder |      createTimeStamp: 20210325115601.0Z
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultReference
+ldapdecoder |    uri: ldaps://EXAMPLE2.COM/CN=Configuration,DC=EXAMPLE2,DC=COM
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:4
+ldapdecoder |  Protocol Op: SearchResultDone
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:29,945 ERROR [stderr] (ServerService Thread Pool -- 77) javax.naming.PartialResultException [Root exception is javax.naming.CommunicationException: EXAMPLE2.COM:636 [Root exception is java.net.ConnectException: Connection refused (Connection refused)]]
 2021-08-25 12:05:29,945 ERROR [stderr] (ServerService Thread Pool -- 77) 	at com.sun.jndi.ldap.AbstractLdapNamingEnumeration.hasMoreImpl(AbstractLdapNamingEnumeration.java:237)
 2021-08-25 12:05:29,945 ERROR [stderr] (ServerService Thread Pool -- 77) 	at com.sun.jndi.ldap.AbstractLdapNamingEnumeration.hasMore(AbstractLdapNamingEnumeration.java:189)
@@ -2564,15 +2564,15 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:30,111 ERROR [stderr] (ServerService Thread Pool -- 77)   0030: 30 11 30 0F 0A 01 00 30   0A 04 02 73 6E 31 04 04  0.0....0...sn1..
 2021-08-25 12:05:30,111 ERROR [stderr] (ServerService Thread Pool -- 77)   0040: 02 73 76                                           .sv
 2021-08-25 12:05:30,111 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:5
-|  Protocol Op: ModRequest
-|    dn:    cn=tempuser,cn=users,dc=example2,dc=com
-|    changes:
-|      add:
-|        sn: sv
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:5
+ldapdecoder |  Protocol Op: ModRequest
+ldapdecoder |    dn:    cn=tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |    changes:
+ldapdecoder |      add:
+ldapdecoder |        sn: sv
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,112 ERROR [stderr] (Finalizer) javax.net.ssl|FINE|03|Finalizer|2021-08-25 12:05:30.112 JST|SSLSocketImpl.java:548|duplex close of SSLSocket
 2021-08-25 12:05:30,112 ERROR [stderr] (Finalizer) javax.net.ssl|FINE|03|Finalizer|2021-08-25 12:05:30.112 JST|SSLSocketImpl.java:1629|close the SSL connection (passive)
 2021-08-25 12:05:30,114 ERROR [stderr] (Finalizer) javax.net.ssl|FINE|03|Finalizer|2021-08-25 12:05:30.114 JST|SSLSocketImpl.java:548|duplex close of SSLSocket
@@ -2583,15 +2583,15 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:30,261 ERROR [stderr] (Thread-100)   0000: 30 84 00 00 00 10 02 01   05 67 84 00 00 00 07 0A  0........g......
 2021-08-25 12:05:30,261 ERROR [stderr] (Thread-100)   0010: 01 00 04 00 04 00                                  ......
 2021-08-25 12:05:30,261 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:5
-|  Protocol Op: ModResponse
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:5
+ldapdecoder |  Protocol Op: ModResponse
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,261 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:30.261 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 76
 2021-08-25 12:05:30,261 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:30.261 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:30,261 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 4A 02 01 06 66 45 04   27 63 6E 3D 74 65 6D 70  0J...fE.'cn=temp
@@ -2600,30 +2600,30 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:30,261 ERROR [stderr] (ServerService Thread Pool -- 77)   0030: 30 1A 30 18 0A 01 02 30   13 04 02 73 6E 31 0D 04  0.0....0...sn1..
 2021-08-25 12:05:30,261 ERROR [stderr] (ServerService Thread Pool -- 77)   0040: 0B 73 76 5F 72 65 70 6C   61 63 65 64              .sv_replaced
 2021-08-25 12:05:30,261 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:6
-|  Protocol Op: ModRequest
-|    dn:    cn=tempuser,cn=users,dc=example2,dc=com
-|    changes:
-|      replace:
-|        sn: sv_replaced
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:6
+ldapdecoder |  Protocol Op: ModRequest
+ldapdecoder |    dn:    cn=tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |    changes:
+ldapdecoder |      replace:
+ldapdecoder |        sn: sv_replaced
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,466 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.465 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:30,466 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.466 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:30,467 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.467 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
 2021-08-25 12:05:30,467 ERROR [stderr] (Thread-100)   0000: 30 84 00 00 00 10 02 01   06 67 84 00 00 00 07 0A  0........g......
 2021-08-25 12:05:30,467 ERROR [stderr] (Thread-100)   0010: 01 00 04 00 04 00                                  ......
 2021-08-25 12:05:30,467 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:6
-|  Protocol Op: ModResponse
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:6
+ldapdecoder |  Protocol Op: ModResponse
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,469 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:30.468 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 76
 2021-08-25 12:05:30,469 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:30.469 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:30,470 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 4A 02 01 07 66 45 04   27 63 6E 3D 74 65 6D 70  0J...fE.'cn=temp
@@ -2632,30 +2632,30 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:30,470 ERROR [stderr] (ServerService Thread Pool -- 77)   0030: 30 1A 30 18 0A 01 01 30   13 04 02 73 6E 31 0D 04  0.0....0...sn1..
 2021-08-25 12:05:30,470 ERROR [stderr] (ServerService Thread Pool -- 77)   0040: 0B 73 76 5F 72 65 70 6C   61 63 65 64              .sv_replaced
 2021-08-25 12:05:30,470 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:7
-|  Protocol Op: ModRequest
-|    dn:    cn=tempuser,cn=users,dc=example2,dc=com
-|    changes:
-|      delete:
-|        sn: sv_replaced
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:7
+ldapdecoder |  Protocol Op: ModRequest
+ldapdecoder |    dn:    cn=tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |    changes:
+ldapdecoder |      delete:
+ldapdecoder |        sn: sv_replaced
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,670 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.670 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:30,670 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.670 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:30,670 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.670 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
 2021-08-25 12:05:30,670 ERROR [stderr] (Thread-100)   0000: 30 84 00 00 00 10 02 01   07 67 84 00 00 00 07 0A  0........g......
 2021-08-25 12:05:30,670 ERROR [stderr] (Thread-100)   0010: 01 00 04 00 04 00                                  ......
 2021-08-25 12:05:30,670 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:7
-|  Protocol Op: ModResponse
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:7
+ldapdecoder |  Protocol Op: ModResponse
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,670 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:30.670 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 94
 2021-08-25 12:05:30,671 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:30.671 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:30,671 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 5C 02 01 08 6C 57 04   27 63 6E 3D 74 65 6D 70  0\...lW.'cn=temp
@@ -2665,15 +2665,15 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:30,671 ERROR [stderr] (ServerService Thread Pool -- 77)   0040: 72 01 01 FF 80 18 63 6E   3D 75 73 65 72 73 2C 64  r.....cn=users,d
 2021-08-25 12:05:30,671 ERROR [stderr] (ServerService Thread Pool -- 77)   0050: 63 3D 57 52 4F 4E 47 2C   64 63 3D 63 6F 6D        c=WRONG,dc=com
 2021-08-25 12:05:30,671 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:8
-|  Protocol Op: ModifyDNRequest
-|    entry: cn=tempuser,cn=users,dc=example2,dc=com
-|    newrdn: cn=new_tempuser
-|    deleteoldrdn: True
-|    newSuperior: cn=users,dc=WRONG,dc=com
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:8
+ldapdecoder |  Protocol Op: ModifyDNRequest
+ldapdecoder |    entry: cn=tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |    newrdn: cn=new_tempuser
+ldapdecoder |    deleteoldrdn: True
+ldapdecoder |    newSuperior: cn=users,dc=WRONG,dc=com
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,875 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.875 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 113
 2021-08-25 12:05:30,876 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.876 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 113
 2021-08-25 12:05:30,877 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:30.877 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
@@ -2684,15 +2684,15 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:30,878 ERROR [stderr] (Thread-100)   0040: 30 31 32 20 28 44 49 52   5F 45 52 52 4F 52 29 2C  012 (DIR_ERROR),
 2021-08-25 12:05:30,878 ERROR [stderr] (Thread-100)   0050: 20 64 61 74 61 20 33 0A   00                        data 3..
 2021-08-25 12:05:30,878 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:8
-|  Protocol Op: ModifyDNResponse
-|    resultCode: other(80)
-|    matchedDN:  
-|    diagnosticMessage: b'00002089: UpdErr: DSID-031B0DCE, problem 5012 (DIR_ERROR), data 3\n\x00'
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:8
+ldapdecoder |  Protocol Op: ModifyDNResponse
+ldapdecoder |    resultCode: other(80)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b'00002089: UpdErr: DSID-031B0DCE, problem 5012 (DIR_ERROR), data 3\n\x00'
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:30,879 ERROR [stderr] (ServerService Thread Pool -- 77) javax.naming.NamingException: [LDAP: error code 80 - 00002089: UpdErr: DSID-031B0DCE, problem 5012 (DIR_ERROR), data 3
 2021-08-25 12:05:30,879 ERROR [stderr] (ServerService Thread Pool -- 77)  ]; remaining name 'cn=tempuser,cn=users,dc=example2,dc=com'
 2021-08-25 12:05:30,879 ERROR [stderr] (ServerService Thread Pool -- 77) 	at com.sun.jndi.ldap.LdapCtx.mapErrorCode(LdapCtx.java:3305)
@@ -2736,42 +2736,42 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:30,884 ERROR [stderr] (ServerService Thread Pool -- 77)   0030: 04 0F 63 6E 3D 6E 65 77   5F 74 65 6D 70 75 73 65  ..cn=new_tempuse
 2021-08-25 12:05:30,884 ERROR [stderr] (ServerService Thread Pool -- 77)   0040: 72 01 01 FF                                        r...
 2021-08-25 12:05:30,884 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:9
-|  Protocol Op: ModifyDNRequest
-|    entry: cn=tempuser,cn=users,dc=example2,dc=com
-|    newrdn: cn=new_tempuser
-|    deleteoldrdn: True
-|    newSuperior:
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:9
+ldapdecoder |  Protocol Op: ModifyDNRequest
+ldapdecoder |    entry: cn=tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |    newrdn: cn=new_tempuser
+ldapdecoder |    deleteoldrdn: True
+ldapdecoder |    newSuperior:
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:31,015 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.015 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:31,016 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.015 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:31,016 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.016 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
 2021-08-25 12:05:31,017 ERROR [stderr] (Thread-100)   0000: 30 84 00 00 00 10 02 01   09 6D 84 00 00 00 07 0A  0........m......
 2021-08-25 12:05:31,017 ERROR [stderr] (Thread-100)   0010: 01 00 04 00 04 00                                  ......
 2021-08-25 12:05:31,017 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:9
-|  Protocol Op: ModifyDNResponse
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:9
+ldapdecoder |  Protocol Op: ModifyDNResponse
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:31,018 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.017 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 46
 2021-08-25 12:05:31,019 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.018 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:31,019 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 2C 02 01 0A 4A 27 63   6E 3D 74 65 6D 70 75 73  0,...J'cn=tempus
 2021-08-25 12:05:31,019 ERROR [stderr] (ServerService Thread Pool -- 77)   0010: 65 72 2C 63 6E 3D 75 73   65 72 73 2C 64 63 3D 65  er,cn=users,dc=e
 2021-08-25 12:05:31,019 ERROR [stderr] (ServerService Thread Pool -- 77)   0020: 78 61 6D 70 6C 65 32 2C   64 63 3D 63 6F 6D        xample2,dc=com
 2021-08-25 12:05:31,019 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:10
-|  Protocol Op: DelRequest
-|    dn: cn=tempuser,cn=users,dc=example2,dc=com
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:10
+ldapdecoder |  Protocol Op: DelRequest
+ldapdecoder |    dn: cn=tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:31,182 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.182 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 188
 2021-08-25 12:05:31,183 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.183 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 188
 2021-08-25 12:05:31,184 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.184 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
@@ -2787,15 +2787,15 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:31,185 ERROR [stderr] (Thread-100)   0090: 43 3D 45 58 41 4D 50 4C   45 32 2C 44 43 3D 43 4F  C=EXAMPLE2,DC=CO
 2021-08-25 12:05:31,185 ERROR [stderr] (Thread-100)   00A0: 4D 27 0A 00                                        M'..
 2021-08-25 12:05:31,185 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:10
-|  Protocol Op: DelResponse
-|    resultCode: noSuchObject(32)
-|    matchedDN:  CN=Users,DC=EXAMPLE2,DC=COM
-|    diagnosticMessage: b"0000208D: NameErr: DSID-03100241, problem 2001 (NO_OBJECT), data 0, best match of:\n\t'CN=Users,DC=EXAMPLE2,DC=COM'\n\x00"
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:10
+ldapdecoder |  Protocol Op: DelResponse
+ldapdecoder |    resultCode: noSuchObject(32)
+ldapdecoder |    matchedDN:  CN=Users,DC=EXAMPLE2,DC=COM
+ldapdecoder |    diagnosticMessage: b"0000208D: NameErr: DSID-03100241, problem 2001 (NO_OBJECT), data 0, best match of:\n\t'CN=Users,DC=EXAMPLE2,DC=COM'\n\x00"
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:31,186 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.186 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 50
 2021-08-25 12:05:31,187 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.186 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:31,187 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 30 02 01 0B 4A 2B 63   6E 3D 6E 65 77 5F 74 65  00...J+cn=new_te
@@ -2803,37 +2803,37 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:31,187 ERROR [stderr] (ServerService Thread Pool -- 77)   0020: 64 63 3D 65 78 61 6D 70   6C 65 32 2C 64 63 3D 63  dc=example2,dc=c
 2021-08-25 12:05:31,187 ERROR [stderr] (ServerService Thread Pool -- 77)   0030: 6F 6D                                              om
 2021-08-25 12:05:31,187 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:11
-|  Protocol Op: DelRequest
-|    dn: cn=new_tempuser,cn=users,dc=example2,dc=com
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:11
+ldapdecoder |  Protocol Op: DelRequest
+ldapdecoder |    dn: cn=new_tempuser,cn=users,dc=example2,dc=com
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:31,387 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.387 JST|SSLSocketInputRecord.java:213|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:31,388 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.388 JST|SSLSocketInputRecord.java:249|READ: TLSv1.2 application_data, length = 46
 2021-08-25 12:05:31,389 ERROR [stderr] (Thread-100) javax.net.ssl|FINE|8F|Thread-100|2021-08-25 12:05:31.388 JST|SSLCipher.java:1622|Plaintext after DECRYPTION (
 2021-08-25 12:05:31,389 ERROR [stderr] (Thread-100)   0000: 30 84 00 00 00 10 02 01   0B 6B 84 00 00 00 07 0A  0........k......
 2021-08-25 12:05:31,389 ERROR [stderr] (Thread-100)   0010: 01 00 04 00 04 00                                  ......
 2021-08-25 12:05:31,389 ERROR [stderr] (Thread-100) )
-+-----------------------------------------------
-|  Message ID:11
-|  Protocol Op: DelResponse
-|    resultCode: success(0)
-|    matchedDN:  
-|    diagnosticMessage: b''
-|    referral:   
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:11
+ldapdecoder |  Protocol Op: DelResponse
+ldapdecoder |    resultCode: success(0)
+ldapdecoder |    matchedDN:  
+ldapdecoder |    diagnosticMessage: b''
+ldapdecoder |    referral:   
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:31,390 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.389 JST|SSLSocketOutputRecord.java:309|WRITE: TLS12 application_data, length = 7
 2021-08-25 12:05:31,391 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.390 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
 2021-08-25 12:05:31,391 ERROR [stderr] (ServerService Thread Pool -- 77)   0000: 30 05 02 01 0C 42 00                               0....B.
 2021-08-25 12:05:31,391 ERROR [stderr] (ServerService Thread Pool -- 77) )
-+-----------------------------------------------
-|  Message ID:12
-|  Protocol Op: UnbindRequest
-|    NULL
-|  Controls:[]
-+-----------------------------------------------
+ldapdecoder +-----------------------------------------------
+ldapdecoder |  Message ID:12
+ldapdecoder |  Protocol Op: UnbindRequest
+ldapdecoder |    NULL
+ldapdecoder |  Controls:[]
+ldapdecoder +-----------------------------------------------
 2021-08-25 12:05:31,391 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.391 JST|SSLSocketImpl.java:548|duplex close of SSLSocket
 2021-08-25 12:05:31,392 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.392 JST|SSLSocketOutputRecord.java:71|WRITE: TLS12 alert(close_notify), length = 10
 2021-08-25 12:05:31,393 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.392 JST|SSLCipher.java:1720|Plaintext before ENCRYPTION (
@@ -2841,7 +2841,6 @@ WARN: decode_ldap_messages: it does not look like LDAPMessage Tag(nr=0, typ=0, c
 2021-08-25 12:05:31,393 ERROR [stderr] (ServerService Thread Pool -- 77) )
 WARN: skip these bytes b'\x01\x00' because of ASN1 syntax error
 2021-08-25 12:05:31,394 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.393 JST|SSLSocketImpl.java:1610|close the underlying socket
-WARN: LogReader._next_plaintext_tls_application_data: Malformed log message: 2021-08-25 12:05:31,394 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.393 JST|SSLSocketImpl.java:1610|close the underlying socket
 2021-08-25 12:05:31,394 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.394 JST|SSLSocketImpl.java:1629|close the SSL connection (initiative)
 2021-08-25 12:05:31,395 ERROR [stderr] (ServerService Thread Pool -- 77) javax.net.ssl|FINE|8B|ServerService Thread Pool -- 77|2021-08-25 12:05:31.395 JST|SSLSocketImpl.java:726|close inbound of SSLSocket
 2021-08-25 12:05:31,398 ERROR [stderr] (Thread-100) javax.net.ssl|WARNING|8F|Thread-100|2021-08-25 12:05:31.398 JST|SSLSocketImpl.java:1537|handling exception (
